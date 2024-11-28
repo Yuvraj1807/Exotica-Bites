@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trial Thali - CRCL Caterers</title>
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff9e6;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: #ffcc00;
+            color: black;
+            font-size: 2rem;
+        }
+        .content {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff9900;
+        }
+        .order-button {
+            display: block;
+            width: 100%;
+            margin: 20px 0;
+            padding: 15px;
+            font-size: 1.2rem;
+            color: white;
+            background: #ff6600;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .order-button:hover {
+            background: #cc5200;
+        }
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Trial Thali - CRCL Caterers
+    </div>
+
+    <div class="content">
+        <div class="section-title">Section: Gravy</div>
+        <ul>
+            <li>Paneer Butter Masala</li>
+            <li>Dum Aloo</li>
+            <li>Butter Naan</li>
+            <li>Missi Roti</li>
+            <li>Gulab Jamun</li>
+        </ul>
+        <button class="order-button" onclick="handleOrder()">Order Now</button>
+    </div>
+
+    <div class="info">
+        <p id="trials-info">Trials Remaining: 3</p>
+        <p id="balance-info">Balance: ₹1000</p>
+    </div>
+
+</body>
+</html>

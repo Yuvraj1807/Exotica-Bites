@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Success</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #121212; /* Dark background */
+      color: #ffffff; /* White text */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #1e1e1e; /* Slightly lighter black for contrast */
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 400px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #f39c12; /* Golden highlight color */
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .order-summary {
+      background-color: #2a2a2a; /* Subtle contrast for order summary */
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .order-summary p {
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      background-color: #f39c12;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #d35400; /* Slightly darker golden for hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Thank You!</h1>
+    <p>Your payment was successful!</p>
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <p>Order ID: <span id="orderId">#12345</span></p>
+      <p>Amount Paid: ₹<span id="amount">500</span></p>
+      <p>Date: <span id="date">27-Nov-2024</span></p>
+    </div>
+    <a href="/" class="btn">Go to Home</a>
+  </div>
+
+  <script>
+    // You can dynamically populate these fields with real data (if passed via query params or fetched from server)
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const orderId = urlParams.get('orderId') || '#12345'; // Replace with actual order ID
+    const amount = urlParams.get('amount') || '500'; // Replace with actual amount
+    const date = urlParams.get('date') || new Date().toLocaleDateString(); // Replace with actual date
+
+    document.getElementById('orderId').textContent = orderId;
+    document.getElementById('amount').textContent = amount;
+    document.getElementById('date').textContent = date;
+  </script>
+</body>
+</html>

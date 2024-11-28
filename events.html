@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Exotica Bites</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Cormorant:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cormorant', serif;
+            background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            text-align: center;
+            background: #6a0572;
+            color: #fff;
+            padding: 40px;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            animation: zoomIn 1s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .event-card {
+            background: white;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 1.5s ease-out;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .event-card h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #6a0572;
+        }
+
+        .event-card p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #ff6f61;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .highlight:hover {
+            color: #6a0572;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #6a0572;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            margin-top: 30px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Events Catered by Exotica Bites
+    </div>
+
+    <div class="container">
+        <!-- Birthday Party -->
+        <div class="event-card">
+            <h2>Birthday Party</h2>
+            <p>
+                Celebrate the perfect birthday party with exquisite food and service. 
+                <span class="highlight" onclick="location.href='caterers.html'">Mayuri Caterers</span> is the best for Birthday Parties.
+            </p>
+        </div>
+
+        <!-- Wedding -->
+        <div class="event-card">
+            <h2>Wedding</h2>
+            <p>
+                Make your big day even more special with delicious catering. 
+                <span class="highlight" onclick="location.href='caterers.html'">Mayuri Caterers</span> is the best in Wedding Catering.
+            </p>
+        </div>
+
+        <!-- Anniversary Party -->
+        <div class="event-card">
+            <h2>Anniversary Party</h2>
+            <p>
+                Relive your cherished memories with a splendid celebration. 
+                <span class="highlight" onclick="location.href='caterers.html'">Safal Caterers</span> is the best for Anniversary Parties.
+            </p>
+        </div>
+
+        <!-- Corporate Party -->
+        <div class="event-card">
+            <h2>Corporate Party</h2>
+            <p>
+                Impress your guests with top-notch corporate catering. 
+                <span class="highlight" onclick="location.href='caterers.html'">Mayuri Caterers</span> is the best for Corporate Parties.
+            </p>
+        </div>
+
+        <!-- Farewell Party -->
+        <div class="event-card">
+            <h2>Farewell Party</h2>
+            <p>
+                Bid adieu with a grand celebration. 
+                <span class="highlight" onclick="location.href='caterers.html'">Safal Caterers</span> is the best for Farewell Parties.
+            </p>
+        </div>
+
+        <!-- Retirement Party -->
+        <div class="event-card">
+            <h2>Retirement Party</h2>
+            <p>
+                Celebrate the milestone of a lifetime. 
+                <span class="highlight" onclick="location.href='caterers.html'">CRCL Caterers</span> is the best for Retirement Parties.
+            </p>
+        </div>
+
+        <!-- Engagement Party -->
+        <div class="event-card">
+            <h2>Engagement Party</h2>
+            <p>
+                Celebrate your love story with exquisite catering. 
+                <span class="highlight" onclick="location.href='caterers.html'">CRCL Caterers</span> is the best for Engagement Parties.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2024 Exotica Bites | Discover the exotic elegance of Indian flavours
+    </div>
+
+</body>
+</html>

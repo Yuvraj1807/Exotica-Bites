@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #121212; /* Dark background */
+      color: #ffffff; /* White text */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #1e1e1e; /* Slightly lighter black for contrast */
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+      width: 350px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #f39c12; /* Golden highlight color */
+    }
+
+    .summary {
+      margin-bottom: 20px;
+    }
+
+    .summary p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    #amount {
+      color: #f39c12; /* Golden text for amount */
+      font-weight: bold;
+    }
+
+    .pay-btn {
+      background-color: #f39c12;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .pay-btn:hover {
+      background-color: #d35400; /* Slightly darker golden for hover */
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #888888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Secure Payment</h1>
+    <div class="summary">
+      <p>Order Summary</p>
+      <p>Amount: ₹<span id="amount">500</span></p> <!-- Update dynamically as needed -->
+    </div>
+    <button id="payButton" class="pay-btn">Pay Now</button>
+    <div class="footer">
+      <p>Powered by Exotica Bites</p>
+    </div>
+  </div>
+
+  <script>
+    // Payment details (can be dynamically fetched from your server)
+    const paymentDetails = {
+      amount: 500, // Amount in INR (you can fetch this dynamically)
+      currency: "INR",
+      receipt: "order_rcptid_11", // Example receipt ID (should be dynamic for every order)
+    };
+
+    document.getElementById('payButton').addEventListener('click', async () => {
+      try {
+        // Step 1: Create an order on the server
+        const response = await fetch('/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(paymentDetails),
+        });
+
+        const order = await response.json();
+
+        if (!response.ok) {
+          throw new Error(order.message || 'Failed to create order');
+        }
+
+        // Step 2: Launch Razorpay Checkout
+        const options = {
+          key: "your_key_id", // Replace with your Razorpay Key ID
+          amount: order.amount, // Amount in smallest currency unit
+          currency: order.currency,
+          name: "Exotica Bites",
+          description: "Food Catering Service",
+          order_id: order.id, // Order ID from the server
+          handler: async function (response) {
+            // Step 3: Payment success callback
+            alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+
+            // Step 4: Notify server of successful payment
+            const verifyResponse = await fetch('/verify-payment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(response),
+            });
+
+            const verifyResult = await verifyResponse.json();
+            if (verifyResponse.ok) {
+              alert('Payment verified successfully! Thank you for your order.');
+              window.location.href = '/success.html'; // Redirect to success page
+            } else {
+              alert(`Verification failed: ${verifyResult.message}`);
+            }
+          },
+          prefill: {
+            name: "Yuvraj", // Prefill customer details (optional)
+            email: "yuvrajsinghchahar18.com",
+            contact: "6375079205",
+          },
+          theme: {
+            color: "#f39c12",
+          },
+        };
+
+        const razorpay = new Razorpay(options);
+        razorpay.open();
+      } catch (error) {
+        console.error('Payment error:', error);
+        alert('Payment failed. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>

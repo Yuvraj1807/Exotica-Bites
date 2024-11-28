@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caterers Information</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #ff6f61;
+            color: white;
+            padding: 30px;
+            font-size: 3rem;
+            font-family: 'Merriweather', serif;
+            animation: slideDown 1.2s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            border-radius: 10px;
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card-header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 15px;
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 20px;
+            font-family: 'Merriweather', serif;
+        }
+
+        .card-body p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #ff6f61;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ff6f61;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #333;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        /* Add button-like styling for menu links */
+        .menu-button {
+            display: inline-block;
+            margin-top: 10px;
+            background: #ff6f61;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            text-align: center;
+        }
+
+        .menu-button:hover {
+            background: #333;
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Welcome to Our Catering Services
+    </div>
+
+    <div class="container">
+        <!-- Mayuri Caterers -->
+        <div class="card">
+            <div class="card-header">
+                Mayuri Caterers
+            </div>
+            <div class="card-body">
+                <p><span class="highlight">Description:</span> "The best caterers in Bhopal"</p>
+                <p><span class="highlight">Address:</span> Shop No.88, Harshawardhan Shopping Complex, Link Rd Number 2, Mata Mandir, TT Nagar, Bhopal, Madhya Pradesh 462003</p>
+                <p><span class="highlight">Contact No.:</span> 098260 25364</p>
+                <p><span class="highlight">Best in:</span> Wedding, Birthday Party, Farewell Party, Anniversary Celebration, etc.</p>
+                <a href="mayuri-menu.html" class="menu-button">View Menu</a>
+            </div>
+        </div>
+
+        <!-- CRCL Caterers -->
+        <div class="card">
+            <div class="card-header">
+                CRCL Caterers
+            </div>
+            <div class="card-body">
+                <p><span class="highlight">Description:</span> "The best price to quality ratio"</p>
+                <p><span class="highlight">Address:</span> Plot No 15/16/17, 2nd Floor, Vision Towers, Yogam Garden, Brindavan Nagar, Valasaravakkam, Chennai, Tamil Nadu 600087</p>
+                <p><span class="highlight">Contact No.:</span> 044 2486 7536</p>
+                <p><span class="highlight">Best in:</span> Wedding, Retirement Party, Corporate Party, Anniversary Celebration, etc.</p>
+                <a href="crcl-menu.html" class="menu-button">View Menu</a>
+            </div>
+        </div>
+
+        <!-- Safal Caterers -->
+        <div class="card">
+            <div class="card-header">
+                Safal Caterers
+            </div>
+            <div class="card-body">
+                <p><span class="highlight">Description:</span> "The best in Non-Veg Food Category"</p>
+                <p><span class="highlight">Address:</span> near Trikal factory, Dudauli Rd, Prabhat Puram, Madiyanva, Lucknow, Uttar Pradesh 226020</p>
+                <p><span class="highlight">Best in:</span> Farewell Party, Corporate Party, Birthday Party, etc.</p>
+                <a href="safal-menu.html" class="menu-button">View Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2024 Exotica Bites Catering Services | Discover the exotic elegance of Indian flavours
+    </div>
+
+</body>
+</html>

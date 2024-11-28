@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Signup - Food Catering</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-group button:hover {
+      background-color: #218838;
+    }
+    .switch {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+    .switch a {
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .switch a:hover {
+      text-decoration: underline;
+    }
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="formTitle">Login</h2>
+    <form id="authForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <div id="nameField" class="form-group" style="display: none;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+      </div>
+      <div class="error-message" id="errorMessage"></div>
+      <div class="form-group">
+        <button type="submit" id="submitButton">Login</button>
+      </div>
+    </form>
+    <div class="switch">
+      <span id="switchText">Don't have an account? </span>
+      <a id="switchLink" onclick="toggleForm()">Sign up</a>
+    </div>
+  </div>
+
+  <script>
+    let isLogin = true;
+
+    const formTitle = document.getElementById('formTitle');
+    const authForm = document.getElementById('authForm');
+    const nameField = document.getElementById('nameField');
+    const errorMessage = document.getElementById('errorMessage');
+    const submitButton = document.getElementById('submitButton');
+    const switchText = document.getElementById('switchText');
+    const switchLink = document.getElementById('switchLink');
+
+    function toggleForm() {
+      isLogin = !isLogin;
+      if (isLogin) {
+        formTitle.textContent = 'Login';
+        nameField.style.display = 'none';
+        submitButton.textContent = 'Login';
+        switchText.textContent = "Don't have an account? ";
+        switchLink.textContent = 'Sign up';
+      } else {
+        formTitle.textContent = 'Sign up';
+        nameField.style.display = 'block';
+        submitButton.textContent = 'Sign up';
+        switchText.textContent = 'Already have an account? ';
+        switchLink.textContent = 'Login';
+      }
+    }
+
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const name = isLogin ? null : document.getElementById('name').value;
+
+      const url = isLogin
+        ? 'http://localhost:5000/api/login'
+        : 'http://localhost:5000/api/register';
+
+      const body = isLogin
+        ? { email, password }
+        : { email, password, name };
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert(isLogin ? 'Login successful!' : 'Signup successful!');
+        window.location.href = 'file:///path/to/your/index.html'; // Replace with the path to your index.html file
+      } else {
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = result.error;
+      }
+    });
+  </script>
+</body>
+</html>
